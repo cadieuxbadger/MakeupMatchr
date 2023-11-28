@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Makeup Matchr | Home{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static '../static/styles/index.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="home">
+  <div class="mobile-centering">
+    <h1 class="visually-hidden">Makeup Matcher</h1>
+    <div class="logo">
+      <img src="{% static '../static/images/MakeupMatchrLogoExpandedOutline.svg' %}" alt="Makeup Matcher Logo">
+    </div>
+    <div>
+      <form action="" method="POST" enctype="multipart/form-data" id="file-form">
+        {% csrf_token %}
+        <div>
+          <div class="text-center">
+            <label for="file" class="btn btn-primary btn-lg rounded-pill border border-4 border-white">
+              <strong>Upload Selfie</strong>
+            </label>
+          </div>
+        </div>
+        <input type="file" accept="image/png, image/jpeg" name="image" id="file"
+          onchange="document.getElementById('loader').style.display='block'; document.getElementById('file-form').style.display='none'; this.form.submit()">
+      </form>
+
+      <div class="loader" id="loader"></div>
+    </div>
+  </div>
+</section>
+
+<section class="about-us">
+  <h2>About Makeup Matchr</h2>
+  <div class="about-row mt-0">
+    <div class="why-container">
+      <div class="card h-100">
+        <h3>
+          What is Makeup Matchr?
+        </h3>
+        <br>
+        <p class="text-start">
+          We made Makeup Matchr because it is incredibly difficult to find a matching foundation by traditional methods.
+          The process of going to a makeup retailer, guessing which foundations may match your specific skin tone, and
+          manually testing each one is very time consuming and inaccessible for some people. Our goal is to streamline
+          the entire process of finding the correct foundation and take all of the guesswork out of this process.
+        </p>
+      </div>
+    </div>
+
+    <div class="why-container">
+      <div class="card h-100">
+        <h3>
+          Who Does Makeup Matchr Help?
+        </h3>
+        <br>
+        <ul class="text-start">
+          <li> People who are unhappy with their current foundation</li>
+          <li> Users who cannot traverse stores and malls easily</li>
+          <li> Users who struggle to find matching foundation shades</li>
+          <li> Those with color-perception and visual disabilities</li>
+          <li> Anyone who doesn't have time to shop for and compare foundations in the traditional way</li>
+        </ul>
+      </div>
+    </div>
+    <div class="why-container">
+      <div class="card h-100">
+        <h3>
+          Student Research Week
+        </h3>
+        <p class="text-start">
+          Our team submitted our project to and
+          (Mario, don't ask) presented at Texas A&M's
+          March 2023 Student Research Week. Our team received
+          Second Place among all Undergraduate Engineering
+          Oral presentations, and you can check out
+          TAMU CSCE's
+          <a href="https://www.linkedin.com/posts/csen-tamu_tamucse-research-students-activity-7049508553421717505--60N?utm_source=share&utm_medium=member_desktop"
+            target="_blank">LinkedIn post</a>
+          for more information!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Our Team</h2>
+
+  <div class="about-row mt-0">
+    <div class="about-col">
+      <div class="abt-card h-100">
+        <h3>
+          Bennett Carley
+        </h3>
+        <img class = "about-img" src= "{% static '../static/images/bennett-headshot.JPG' %}" alt="Portrait of Bennett Carley">
+        <p>
+          Howdy, I’m Bennett! I am a full stack developer who enjoys playing video games and working with robots. One
+          fun fact about myself is that I can make a mean neapolitan style pizza.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-col">
+      <div class="abt-card h-100">
+        <h3>
+          Carlos Carrillo
+        </h3>
+        <img class = "about-img" src= "{% static '../static/images/carlos-headshot.JPG' %}" alt="Portrait of Carlos Carrillo">
+        <p>
+          Howdy! I’m a front-end developer and media production specialist. I enjoy martial arts, sports and video
+          games.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-col">
+      <div class="abt-card h-100">
+        <h3>
+          Mario Sandoval
+        </h3>
+        <img class = "about-img" src= "{% static '../static/images/mario-headshot.JPG' %}" alt="Portrait of Mario Sandoval">
+        <p>
+          Hi all! I’m a Full Stack Software Engineer who enjoys to spend time painting, playing video games, traveling
+          and trying new foods.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-col">
+      <div class="abt-card h-100">
+        <h3>
+          Michael Cadieux
+        </h3>
+        <img class = "about-img" src= "{% static '../static/images/michael-headshot.JPG' %}" alt="Portrait of Michael Cadieux">
+        <p>
+          Hey there! I love working with front-end development and machine learning. When I’m not writing code, I am
+          always either playing saxophone, watching basketball, or playing games (both video and tabletop).
+        </p>
+      </div>
+    </div>
+
+    <div class="about-col">
+      <div class="abt-card h-100">
+        <h3>
+          Lane Dibello
+        </h3>
+        <img class = "about-img" src= "{% static '../static/images/lane-headshot.JPG' %}" alt="Portrait of Lane Dibello">
+        <p>
+          Hey I'm Lane. I'm a software engineer, who also enjoys playing piano, TTRPGs (like D&D), and consuming
+          unhealthy amounts of media. I also wear makeup sometimes!
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+{% endblock %}

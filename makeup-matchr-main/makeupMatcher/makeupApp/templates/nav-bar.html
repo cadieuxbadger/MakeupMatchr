@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" href = "{% static '../static/styles/matchr.css' %}">
+
+<nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="{% static '../static/images/MakeupMatchrIconExpanded.svg' %}" width="50" height="50" alt="Makeup Matcher Logo">
+    </a>
+  </div>
+</nav>

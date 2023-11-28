@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Makeup Matchr | Results{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static '../static/styles/results.css' %}" />
+{% endblock %}
+
+{% block content %}
+{% include 'nav-bar.html' %}
+
+<h1>Your Results</h1>
+
+<div class="row" id="filterPadding">
+    <div class="col-8"></div>
+    <div class="col">
+        <div class="dropdown align-left">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Filter
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.as_ul}}
+
+                    <input class = "cam-btn" type="submit" value="Reset" name="reset"/>
+                    <input class = "cam-btn" type="submit" value="Submit">
+
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class = "result-field">
+    {% for item in match_results %}
+        <div class = "result-card result-info" style = "border: 15px solid rgb({{item.red}},{{item.green}},{{item.blue}});">
+            <div>
+                <h2>{{ item.name }}</h2>
+                <p>Brand: {{ item.brand }}</p>
+                <p>Color Code: {{ item.colorcode }}</p>
+                <p>Price: ${{ item.price|floatformat:"2" }}</p>
+            </div>
+            <div>
+                <a href="{{ item.url }}" target="_blank"><button class = "cam-btn">View Product</button></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

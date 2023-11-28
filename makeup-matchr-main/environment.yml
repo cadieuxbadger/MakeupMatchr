@@ -1,0 +1,11 @@
+name: matchr
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - django
+  - numpy
+  - opencv
+  - pillow
+  - psycopg2
+  - python

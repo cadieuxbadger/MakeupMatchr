@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Makeup Matchr | Picker{% endblock %}
+
+{% block content %}
+{% include 'nav-bar.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static '../static/styles/picker.css' %}" />
+{% endblock %}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Color Picker Instructions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          This page contains an embedded color picker that alters the color of the card under your image. 
+          Click anywhere on the image to change your selected color, which will update the card. 
+          <br><br>
+          Once you are satisfied with your selected color, click <strong>'Submit'</strong> to see your results.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="cam-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>Click Your Skin Tone To Match!</h1>
+
+<div class = "corrected-container">
+  <button type="button" class="cam-btn" data-toggle="modal" data-target="#exampleModal">
+    Instructions
+  </button>
+  <div class = "corrected-card" style="background-color: rgb({{r}},{{g}},{{b}});">
+    <a href="">
+      <img class = "upload" src="data:image/png;base64,{{img_b64}}" alt="uploaded and corrected image to pick color from" ismap="">
+    </a>
+    <br>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <a href="{% url 'index' %}"><input class = "cam-btn" type="button" value="Reupload"></a> 
+      {% if init %}
+        <button class="cam-btn " type="submit" name="submit-picker">Submit</button>
+      {% else %}
+        <button class="cam-btn" type="submit" name="submit-picker" disabled>Submit</button>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
